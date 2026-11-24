@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Versiones del Proyecto | Pastelería Mishky</title>
+
+    <meta name="description" content="Selector de versiones del catálogo interactivo de Pastelería Mishky.">
+
+    <link rel="icon" href="pasteler%C3%ADa-mishky/img/favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-pagina: #fdf8f4;
+            --bg-superficie: #ffffff;
+            --bg-suave: #f7ece4;
+            --texto-principal: #2d1b14;
+            --texto-secundario: #6b4e42;
+            --acento: #7a2e1d;
+            --acento-hover: #581e12;
+            --acento-suave: #f3e2d8;
+            --borde: #e5d1c3;
+            --sombra-suave: 0 8px 24px rgba(45, 27, 20, 0.07);
+            --sombra-hover: 0 14px 32px rgba(45, 27, 20, 0.13);
+            --radio: 16px;
+            --radio-sm: 10px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: "Nunito", system-ui, -apple-system, sans-serif;
+            color: var(--texto-principal);
+            background-color: var(--bg-pagina);
+            line-height: 1.55;
+        }
+
+        h1, h2, h3 {
+            font-family: "Playfair Display", Georgia, serif;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .contenedor {
+            width: min(1100px, 92vw);
+            margin-inline: auto;
+        }
+
+        .cabecera {
+            background-color: var(--bg-superficie);
+            border-bottom: 1px solid var(--borde);
+            padding: 1rem 0;
+        }
+
+        .cabecera__fila {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .marca {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--texto-principal);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .marca img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .badge-repo {
+            background-color: var(--acento-suave);
+            color: var(--acento);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid var(--borde);
+        }
+
+        .portada {
+            padding: clamp(2.5rem, 6vw, 4.2rem) 0 2rem;
+            text-align: center;
+        }
+
+        .portada__etiqueta {
+            margin: 0 0 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--acento);
+        }
+
+        .portada h1 {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .portada p {
+            max-width: 640px;
+            margin: 0 auto;
+            color: var(--texto-secundario);
+            font-size: 1.02rem;
+        }
+
+        main.contenedor {
+            flex: 1;
+            padding-bottom: 3rem;
+        }
+
+        .versiones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .version-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-superficie);
+            border: 1.5px solid var(--borde);
+            border-radius: var(--radio);
+            padding: 1.5rem;
+            box-shadow: var(--sombra-suave);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .version-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-hover);
+            border-color: #cfa990;
+        }
+
+        .version-card--destacada {
+            border-color: var(--acento);
+            background: linear-gradient(180deg, #fffdfb 0%, #ffffff 100%);
+        }
+
+        .version-card__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .version-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.65rem;
+            border-radius: 999px;
+            background-color: var(--bg-suave);
+            color: var(--texto-secundario);
+        }
+
+        .version-tag--activa {
+            background-color: var(--acento);
+            color: #ffffff;
+        }
+
+        .version-card h2 {
+            font-size: 1.35rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .version-card__desc {
+            margin: 0 0 1rem;
+            color: var(--texto-secundario);
+            font-size: 0.94rem;
+        }
+
+        .version-lista {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            font-size: 0.9rem;
+            color: var(--texto-principal);
+        }
+
+        .version-lista li::before {
+            content: "✓ ";
+            color: var(--acento);
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        .btn-abrir {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            min-height: 44px;
+            padding: 0.65rem 1.15rem;
+            border-radius: var(--radio-sm);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+        }
+
+        .btn-abrir--primario {
+            background-color: var(--acento);
+            color: #ffffff;
+            border: 1.5px solid var(--acento);
+        }
+
+        .btn-abrir--primario:hover {
+            background-color: var(--acento-hover);
+            border-color: var(--acento-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-abrir--secundario {
+            background-color: #ffffff;
+            color: var(--acento);
+            border: 1.5px solid var(--acento);
+        }
+
+        .btn-abrir--secundario:hover {
+            background-color: var(--acento-suave);
+            transform: translateY(-1px);
+        }
+
+        .pie {
+            background-color: var(--bg-suave);
+            border-top: 1px solid var(--borde);
+            padding: 1.35rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--texto-secundario);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecera">
+        <div class="contenedor cabecera__fila">
+            <a href="index.html" class="marca">
+                <img src="pasteler%C3%ADa-mishky/img/logo.png" alt="Pastelería Mishky">
+                <span>Pastelería Mishky</span>
+            </a>
+            <span class="badge-repo">Repositorio · 3 Carpetas</span>
+        </div>
+    </header>
+
+    <section class="portada">
+        <div class="contenedor">
+            <p class="portada__etiqueta">Evolución del proyecto · Cusco</p>
+            <h1>Selecciona una versión del catálogo</h1>
+            <p>
+                Accede directamente a cada carpeta subida en el repositorio de Pastelería Mishky.
+            </p>
+        </div>
+    </section>
+
+    <main class="contenedor">
+        <div class="versiones-grid">
+
+            <article class="version-card">
+                <div class="version-card__top">
+                    <span class="version-tag">Carpeta 1</span>
+                    <small>pastelería-mishky</small>
+                </div>
+                <h2>Catálogo Base</h2>
+                <p class="version-card__desc">
+                    Versión base con carga desde JSON, filtros, ordenamiento y modal de detalle.
+                </p>
+                <ul class="version-lista">
+                    <li>Validación de productos y categorías</li>
+                    <li>Búsqueda, orden y filtro de disponibles</li>
+                    <li>Diálogo de detalle por producto</li>
+                </ul>
+                <a href="pasteler%C3%ADa-mishky/cat%C3%A1logo.html" class="btn-abrir btn-abrir--secundario">Abrir pastelería-mishky</a>
+            </article>
+
+            <article class="version-card">
+                <div class="version-card__top">
+                    <span class="version-tag">Carpeta 2</span>
+                    <small>pastelería-mishky -P2</small>
+                </div>
+                <h2>Entrega P2</h2>
+                <p class="version-card__desc">
+                    Segunda etapa del proyecto en el repositorio.
+                </p>
+                <ul class="version-lista">
+                    <li>Revisión y mejoras de interfaz/lógica</li>
+                    <li>Acceso directo a su catálogo</li>
+                </ul>
+                <a href="pasteler%C3%ADa-mishky%20-P2/cat%C3%A1logo.html" class="btn-abrir btn-abrir--secundario">Abrir pastelería-mishky -P2</a>
+            </article>
+
+            <article class="version-card version-card--destacada">
+                <div class="version-card__top">
+                    <span class="version-tag version-tag--activa">Carpeta 3</span>
+                    <small>pastelería-mishky -P3</small>
+                </div>
+                <h2>Entrega P3</h2>
+                <p class="version-card__desc">
+                    Tercera etapa del proyecto con las novedades más recientes.
+                </p>
+                <ul class="version-lista">
+                    <li>Versión más reciente de la carpeta P3</li>
+                    <li>Acceso directo a su catálogo</li>
+                </ul>
+                <a href="pasteler%C3%ADa-mishky%20-P3/cat%C3%A1logo.html" class="btn-abrir btn-abrir--primario">Abrir pastelería-mishky -P3</a>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="pie">
+        <div class="contenedor">
+            <strong>Pastelería Mishky</strong> · Av. El Sol 845, Cusco · Proyecto académico
+        </div>
+    </footer>
+
+</body>
+</html>
