@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo | Pastelería Mishky</title>
+
+    <meta name="description" content="Tortas, postres peruanos, panes y galletas artesanales.">
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <div class="contenedor cabecera__fila">
+
+            <a href="catalogo.html" class="marca">
+                <img src="img/logo.png" alt="Pastelería Mishky" width="176" height="52">
+            </a>
+
+            <nav aria-label="Principal">
+                <ul class="menu">
+                    <li><a href="#catalogo" aria-current="page">Catálogo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="contenedor hero__texto">
+            <p class="hero__antetitulo">Hecho a mano en Cusco desde 2012</p>
+
+            <h1>Dulces que se recuerdan</h1>
+
+            <p>Tortas, postres peruanos, panes y galletas horneados cada mañana.</p>
+        </div>
+    </section>
+
+    <main id="catalogo" class="contenedor">
+
+        <h2 class="titulo-seccion">Nuestro catálogo</h2>
+
+        <!-- Los botones de categoría se generan desde productos.json -->
+        <div id="filtros"
+             class="filtros"
+             role="group"
+             aria-label="Filtrar por categoría">
+        </div>
+
+        <!-- Controles: buscador, orden y casilla de stock -->
+        <div id="controles" class="controles">
+
+            <div class="campo">
+                <label for="busqueda">Buscar por nombre</label>
+                <input type="search" id="busqueda" placeholder="Ej.: torta" autocomplete="off" aria-label="Buscar productos por nombre">
+            </div>
+
+            <div class="campo">
+                <label for="orden">Ordenar por</label>
+                <select id="orden" aria-label="Ordenar productos">
+                    <option value="defecto">Predeterminado</option>
+                    <option value="asc">Menor precio</option>
+                    <option value="desc">Mayor precio</option>
+                    <option value="nombre">Nombre A–Z</option>
+                </select>
+            </div>
+
+            <label class="campo campo--check">
+                <input type="checkbox" id="solo-disponibles" aria-label="Mostrar solo productos disponibles">
+                Solo disponibles
+            </label>
+
+            <div class="campo">
+                <button type="button" id="abrir-mesa-dulce" class="btn-mesa-dulce">
+                    Armar Mesa Dulce (<span id="resumen-contador">0</span>)
+                </button>
+            </div>
+
+        </div>
+
+        <p id="estado" class="estado" role="status" aria-live="polite"></p>
+
+        <p id="aviso" class="aviso" hidden></p>
+
+        <ul id="grilla" class="grilla" aria-busy="true" aria-label="Productos del catálogo"></ul>
+
+    </main>
+
+    <!-- Barra rápida inferior para abrir el armador en cualquier momento -->
+    <aside id="barra-mesa" class="barra-mesa" aria-label="Resumen rápido de selección" hidden>
+        <div class="contenedor barra-mesa__contenido">
+            <div>
+                <strong id="barra-mesa-titulo">Mesa Dulce lista</strong>
+                <p id="barra-mesa-detalle" class="barra-mesa__detalle">0 productos · Total: S/ 0.00</p>
+            </div>
+            <div class="barra-mesa__acciones">
+                <button type="button" id="barra-mesa-abrir" class="btn-mesa-dulce">Ver y calcular</button>
+                <button type="button" id="barra-mesa-limpiar" class="btn-secundario">Vaciar</button>
+            </div>
+        </div>
+    </aside>
+
+    <footer id="contacto" class="pie">
+        <div class="contenedor">
+            <p>
+                <strong>Pastelería Mishky</strong> · Av. El Sol 845, Cusco · Pedidos: 984 000 111
+            </p>
+
+            <p>&copy; 2026 · Proyecto académico · Desarrollo Web I</p>
+        </div>
+    </footer>
+
+    <!-- Modal de detalle (nativo) -->
+    <dialog id="detalle" class="detalle" aria-labelledby="detalle-titulo">
+        <button type="button" id="detalle-cerrar" class="detalle__cerrar" aria-label="Cerrar detalle">×</button>
+
+        <img id="detalle-img" alt="" width="900" height="900">
+
+        <div class="detalle__cuerpo">
+            <p id="detalle-categoria" class="tarjeta__categoria"></p>
+            <h2 id="detalle-titulo"></h2>
+            <p id="detalle-descripcion"></p>
+            <p class="detalle__datos">
+                <strong id="detalle-precio"></strong> · <span id="detalle-porciones"></span>
+            </p>
+            <p id="detalle-stock" class="detalle__stock"></p>
+            <div class="detalle__acciones">
+                <button type="button" id="detalle-agregar" class="btn-mesa-dulce">Agregar a mi Mesa Dulce</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Modal innovador: Simulador y Armador de Mesa Dulce Mishky -->
+    <dialog id="mesa-dulce" class="detalle mesa-dulce" aria-labelledby="mesa-titulo">
+        <button type="button" id="mesa-cerrar" class="detalle__cerrar" aria-label="Cerrar armador de mesa dulce">×</button>
+
+        <div class="mesa-dulce__contenedor">
+            <p class="tarjeta__categoria">Experiencia interactiva Mishky</p>
+            <h2 id="mesa-titulo">Armador de Mesa Dulce y Cálculo Inteligente</h2>
+            <p class="mesa-dulce__subtitulo">
+                Combina postres disponibles, calcula porciones estimadas y obtén descuento automático por cantidad.
+            </p>
+
+            <div class="mesa-dulce__controles-evento">
+                <div class="campo">
+                    <label for="tipo-evento">Tipo de ocasión</label>
+                    <select id="tipo-evento">
+                        <option value="antojo">Antojo de tarde (1–4 personas)</option>
+                        <option value="cumpleanos">Cumpleaños íntimo (5–15 personas)</option>
+                        <option value="reunion">Reunión familiar (16–30 personas)</option>
+                        <option value="mesa-cusco">Mesa dulce especial Cusco (30+ personas)</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="invitados-estimados">Invitados estimados</label>
+                    <input type="number" id="invitados-estimados" min="1" max="200" value="8">
+                </div>
+            </div>
+
+            <div class="mesa-dulce__grid">
+                <section aria-label="Productos disponibles para agregar">
+                    <h3>1. Elige tus dulces disponibles</h3>
+                    <ul id="mesa-catalogo-lista" class="mesa-lista"></ul>
+                </section>
+
+                <section aria-label="Resumen de tu selección">
+                    <h3>2. Tu selección y cálculo</h3>
+                    <ul id="mesa-seleccion-lista" class="mesa-lista"></ul>
+
+                    <div id="mesa-resumen-metricas" class="mesa-metricas">
+                        <p><strong>Ítems elegidos:</strong> <span id="metrica-items">0</span></p>
+                        <p><strong>Porciones/unidades estimadas:</strong> <span id="metrica-porciones">0</span></p>
+                        <p><strong>Cobertura por invitado:</strong> <span id="metrica-cobertura">0%</span></p>
+                        <p><strong>Subtotal:</strong> <span id="metrica-subtotal">S/ 0.00</span></p>
+                        <p><strong>Descuento por volumen:</strong> <span id="metrica-descuento">S/ 0.00 (0%)</span></p>
+                        <p class="mesa-total"><strong>Total estimado:</strong> <span id="metrica-total">S/ 0.00</span></p>
+                    </div>
+
+                    <div class="mesa-acciones-finales">
+                        <button type="button" id="copiar-resumen" class="btn-mesa-dulce">Copiar resumen del pedido</button>
+                        <button type="button" id="limpiar-mesa" class="btn-secundario">Limpiar selección</button>
+                    </div>
+
+                    <p id="mensaje-copiado" class="estado" role="status" aria-live="polite"></p>
+                </section>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Plantilla de una tarjeta de producto -->
+    <template id="tpl-producto">
+
+        <li class="tarjeta">
+
+            <figure class="tarjeta__foto">
+                <img width="600" height="600" loading="lazy"
+                     sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px"
+                     alt="">
+                <span class="etiqueta" hidden></span>
+            </figure>
+
+            <div class="tarjeta__cuerpo">
+
+                <p class="tarjeta__categoria"></p>
+
+                <h3 class="tarjeta__nombre">
+                    <button type="button" class="tarjeta__abrir" aria-haspopup="dialog"></button>
+                </h3>
+
+                <p class="tarjeta__descripcion"></p>
+
+                <div class="tarjeta__pie">
+                    <span class="tarjeta__precio"></span>
+                    <span class="tarjeta__porciones"></span>
+                </div>
+
+                <div class="tarjeta__extra">
+                    <button type="button" class="btn-agregar-rapido">+ Agregar a Mesa</button>
+                </div>
+
+            </div>
+
+        </li>
+
+    </template>
+
+    <script src="js/catalogo.js" defer></script>
+
+</body>
+</html>
