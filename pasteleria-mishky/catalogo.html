@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo | Pastelería Mishky</title>
+
+    <meta name="description" content="Tortas, postres peruanos, panes y galletas artesanales.">
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito:wght@400;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header class="cabecera">
+        <div class="contenedor cabecera__fila">
+
+            <a href="catalogo.html" class="marca">
+                <img src="img/logo.png" alt="Pastelería Mishky" width="176" height="52">
+            </a>
+
+            <nav aria-label="Principal">
+                <ul class="menu">
+                    <li><a href="#catalogo" aria-current="page">Catálogo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="contenedor hero__texto">
+            <p class="hero__antetitulo">Hecho a mano en Cusco desde 2012</p>
+
+            <h1>Dulces que se recuerdan</h1>
+
+            <p>Tortas, postres peruanos, panes y galletas horneados cada mañana.</p>
+        </div>
+    </section>
+
+    <main id="catalogo" class="contenedor">
+
+        <h2 class="titulo-seccion">Nuestro catálogo</h2>
+
+        <!-- Los botones de categoría se generan desde productos.json -->
+        <div id="filtros"
+             class="filtros"
+             role="group"
+             aria-label="Filtrar por categoría">
+        </div>
+
+        <!-- Controles: buscador, orden y casilla de stock -->
+        <div id="controles" class="controles">
+
+            <div class="campo">
+                <label for="busqueda">Buscar por nombre</label>
+                <input type="search" id="busqueda" placeholder="Ej.: torta" autocomplete="off" aria-label="Buscar productos por nombre">
+            </div>
+
+            <div class="campo">
+                <label for="orden">Ordenar por</label>
+                <select id="orden" aria-label="Ordenar productos">
+                    <option value="defecto">Predeterminado</option>
+                    <option value="asc">Menor precio</option>
+                    <option value="desc">Mayor precio</option>
+                    <option value="nombre">Nombre A–Z</option>
+                </select>
+            </div>
+
+            <label class="campo campo--check">
+                <input type="checkbox" id="solo-disponibles" aria-label="Mostrar solo productos disponibles">
+                Solo disponibles
+            </label>
+
+        </div>
+
+        <p id="estado" class="estado" role="status" aria-live="polite"></p>
+
+        <p id="aviso" class="aviso" hidden></p>
+
+        <ul id="grilla" class="grilla" aria-busy="true" aria-label="Productos del catálogo"></ul>
+
+    </main>
+
+    <footer id="contacto" class="pie">
+        <div class="contenedor">
+            <p>
+                <strong>Pastelería Mishky</strong> · Av. El Sol 845, Cusco · Pedidos: 984 000 111
+            </p>
+
+            <p>&copy; 2026 · Proyecto académico · Desarrollo Web I</p>
+        </div>
+    </footer>
+
+    <!-- Modal de detalle (nativo) -->
+    <dialog id="detalle" class="detalle" aria-labelledby="detalle-titulo">
+        <button type="button" id="detalle-cerrar" class="detalle__cerrar" aria-label="Cerrar detalle">×</button>
+
+        <img id="detalle-img" alt="" width="900" height="900">
+
+        <div class="detalle__cuerpo">
+            <p id="detalle-categoria" class="tarjeta__categoria"></p>
+            <h2 id="detalle-titulo"></h2>
+            <p id="detalle-descripcion"></p>
+            <p class="detalle__datos">
+                <strong id="detalle-precio"></strong> · <span id="detalle-porciones"></span>
+            </p>
+            <p id="detalle-stock" class="detalle__stock"></p>
+        </div>
+    </dialog>
+
+    <!-- Plantilla de una tarjeta de producto -->
+    <template id="tpl-producto">
+
+        <li class="tarjeta">
+
+            <figure class="tarjeta__foto">
+                <img width="600" height="600" loading="lazy"
+                     sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 280px"
+                     alt="">
+                <span class="etiqueta" hidden></span>
+            </figure>
+
+            <div class="tarjeta__cuerpo">
+
+                <p class="tarjeta__categoria"></p>
+
+                <h3 class="tarjeta__nombre">
+                    <button type="button" class="tarjeta__abrir" aria-haspopup="dialog"></button>
+                </h3>
+
+                <p class="tarjeta__descripcion"></p>
+
+                <div class="tarjeta__pie">
+                    <span class="tarjeta__precio"></span>
+                    <span class="tarjeta__porciones"></span>
+                </div>
+
+            </div>
+
+        </li>
+
+    </template>
+
+    <script src="js/catalogo.js" defer></script>
+
+</body>
+</html>

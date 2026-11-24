@@ -1,0 +1,548 @@
+/* =============================================================
+   Pastelería Mishky · Estilos del catálogo
+   ============================================================= */
+:root {
+  --crema: #fff8f0;
+  --crema-2: #f6eadb;
+  --chocolate: #4a2c2a;
+  --cacao: #6b4433;
+  --rosa: #c9566c;
+  --dorado: #c8963e;
+  --gris: #7a6a60;
+  --blanco: #ffffff;
+  --radio: 14px;
+  --sombra: 0 6px 18px rgba(74, 44, 42, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  color: var(--chocolate);
+  background: var(--crema);
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.contenedor {
+  width: min(1180px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--blanco);
+  box-shadow: 0 2px 10px rgba(74, 44, 42, 0.08);
+}
+
+.cabecera__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.6rem;
+}
+
+.marca img {
+  height: 52px;
+  width: auto;
+}
+
+.menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--chocolate);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a[aria-current="page"] {
+  color: var(--rosa);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  color: var(--blanco);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(40, 22, 18, 0.82) 0%,
+      rgba(40, 22, 18, 0.35) 60%,
+      rgba(40, 22, 18, 0) 100%
+    ),
+    url("../img/banner.jpg") center / cover no-repeat;
+}
+
+.hero__texto {
+  max-width: 1180px;
+}
+
+.hero__antetitulo {
+  color: #f3d9a4;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin: 0.3rem 0;
+}
+
+.hero p {
+  max-width: 30rem;
+  font-size: 1.1rem;
+}
+
+/* ---------- Filtros ---------- */
+.titulo-seccion {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  text-align: center;
+  margin: 2.5rem 0 1rem;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.filtro {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 2px solid var(--cacao);
+  background: transparent;
+  color: var(--cacao);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+
+.filtro:hover {
+  transform: translateY(-2px);
+}
+
+.filtro[aria-pressed="true"] {
+  background: var(--cacao);
+  color: var(--blanco);
+}
+
+.filtro:focus-visible {
+  outline: 3px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+.estado {
+  text-align: center;
+  color: var(--gris);
+  min-height: 1.5em;
+}
+
+.estado--error {
+  color: #a3202f;
+  font-weight: 700;
+}
+
+/* ---------- Grilla y tarjetas ---------- */
+.grilla {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 3rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(74, 44, 42, 0.18);
+}
+
+.tarjeta__foto {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--crema-2);
+}
+
+.tarjeta__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.etiqueta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--dorado);
+  color: var(--blanco);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+
+.etiqueta--agotado {
+  background: #8a1c2b;
+}
+
+.tarjeta--agotado img {
+  filter: grayscale(0.85);
+  opacity: 0.75;
+}
+
+.tarjeta__cuerpo {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tarjeta__categoria {
+  margin: 0;
+  color: var(--rosa);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tarjeta__nombre {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0.4rem;
+}
+
+.tarjeta__descripcion {
+  margin: 0 0 1rem;
+  color: var(--gris);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.tarjeta__pie {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px dashed var(--crema-2);
+  padding-top: 0.7rem;
+}
+
+.tarjeta__precio {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--chocolate);
+}
+
+.tarjeta__porciones {
+  font-size: 0.85rem;
+  color: var(--gris);
+}
+
+/* ---------- Pie ---------- */
+.pie {
+  background: var(--chocolate);
+  color: var(--crema-2);
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.pie p {
+  margin: 0.2rem 0;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    gap: 1rem;
+  }
+
+  .hero {
+    min-height: 260px;
+  }
+
+  .titulo-seccion {
+    font-size: 1.6rem;
+  }
+}
+
+/* =============================================================
+   AMPLIACIÓN · Controles
+   ============================================================= */
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.campo input[type="search"],
+.campo select {
+  font: inherit;
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--cacao);
+  border-radius: 999px;
+  background: var(--blanco);
+  color: var(--chocolate);
+}
+
+.campo input:focus-visible,
+.campo select:focus-visible {
+  outline: 3px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+.campo--check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.55rem;
+  cursor: pointer;
+}
+
+.campo--check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--cacao);
+}
+
+.aviso {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #8a5a00;
+  background: #fff3d6;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  width: fit-content;
+  margin: 0.5rem auto;
+}
+
+.reintentar {
+  font: inherit;
+  font-weight: 700;
+  margin-left: 0.6rem;
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  border: 2px solid #a3202f;
+  background: transparent;
+  color: #a3202f;
+  cursor: pointer;
+}
+
+.reintentar:hover {
+  background: #a3202f;
+  color: var(--blanco);
+}
+
+/* ---------- Tarjeta clicable ---------- */
+.tarjeta {
+  position: relative;
+}
+
+.tarjeta__abrir {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* El botón cubre toda la tarjeta: se puede hacer clic en cualquier parte */
+.tarjeta__abrir::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.tarjeta__abrir:focus-visible {
+  outline: none;
+}
+
+.tarjeta:has(.tarjeta__abrir:focus-visible) {
+  outline: 3px solid var(--dorado);
+  outline-offset: 3px;
+}
+
+/* ---------- Foto cargada (lazy) ---------- */
+.tarjeta__foto img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tarjeta__foto img.foto-cargada {
+  opacity: 1;
+}
+
+.tarjeta--agotado img.foto-cargada {
+  opacity: 0.75;
+}
+
+/* ---------- Tarjetas fantasma ---------- */
+.tarjeta--fantasma {
+  pointer-events: none;
+  animation: pulso 1.4s ease-in-out infinite;
+}
+
+.fantasma__foto {
+  aspect-ratio: 1 / 1;
+  background: var(--crema-2);
+}
+
+.fantasma__cuerpo {
+  padding: 1rem 1.1rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.fantasma__linea {
+  height: 0.9rem;
+  border-radius: 6px;
+  background: var(--crema-2);
+}
+
+@keyframes pulso {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta--fantasma {
+    animation: none;
+  }
+
+  .tarjeta__foto img {
+    transition: none;
+  }
+}
+
+/* ---------- Modal de detalle ---------- */
+.detalle {
+  border: 0;
+  padding: 0;
+  width: min(560px, 92vw);
+  max-height: 92vh;
+  overflow: auto;
+  border-radius: var(--radio);
+  background: var(--blanco);
+  color: var(--chocolate);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.detalle::backdrop {
+  background: rgba(40, 22, 18, 0.65);
+}
+
+.detalle img {
+  width: 100%;
+  height: auto;
+  max-height: 55vh;
+  object-fit: cover;
+}
+
+.detalle__cuerpo {
+  padding: 1rem 1.4rem 1.4rem;
+}
+
+.detalle__cuerpo h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.detalle__datos {
+  font-size: 1.2rem;
+}
+
+.detalle__stock {
+  color: var(--gris);
+  font-weight: 700;
+}
+
+.detalle__stock--agotado {
+  color: #8a1c2b;
+}
+
+.detalle__cerrar {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+  background: var(--blanco);
+  color: var(--chocolate);
+  cursor: pointer;
+  box-shadow: var(--sombra);
+}
+
+.detalle__cerrar:focus-visible {
+  outline: 3px solid var(--dorado);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
