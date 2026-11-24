@@ -1,0 +1,821 @@
+/* =============================================================
+   Pastelería Mishky · Hoja de estilos principal
+   ============================================================= */
+
+:root {
+  --bg-pagina: #fdf8f4;
+  --bg-superficie: #ffffff;
+  --bg-suave: #f7ece4;
+  --texto-principal: #2d1b14;
+  --texto-secundario: #6b4e42;
+  --acento: #7a2e1d;
+  --acento-hover: #581e12;
+  --acento-suave: #f3e2d8;
+  --borde: #e5d1c3;
+  --exito: #1f6f43;
+  --agotado: #9e2a2b;
+  --sombra-suave: 0 6px 20px rgba(45, 27, 20, 0.07);
+  --sombra-hover: 0 12px 28px rgba(45, 27, 20, 0.13);
+  --radio: 14px;
+  --radio-sm: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding-bottom: 5rem;
+  font-family: "Nunito", system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--texto-principal);
+  background-color: var(--bg-pagina);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  line-height: 1.2;
+  color: var(--texto-principal);
+}
+
+.contenedor {
+  width: min(1160px, 92vw);
+  margin-inline: auto;
+}
+
+/* -------------------------------------------------------------
+   Cabecera y navegación
+   ------------------------------------------------------------- */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: rgba(255, 250, 246, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borde);
+}
+
+.cabecera__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 74px;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.marca img {
+  width: 176px;
+  height: 52px;
+  max-width: none;
+  object-fit: contain;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--texto-principal);
+  padding: 0.35rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu a:hover,
+.menu a[aria-current="page"] {
+  color: var(--acento);
+  border-bottom-color: var(--acento);
+}
+
+/* -------------------------------------------------------------
+   Hero / Portada
+   ------------------------------------------------------------- */
+.hero {
+  position: relative;
+  background:
+    linear-gradient(105deg, rgba(34, 17, 11, 0.78) 0%, rgba(34, 17, 11, 0.48) 60%, rgba(34, 17, 11, 0.35) 100%),
+    url("../img/banner.jpg") center / cover no-repeat;
+  color: #fff;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  background-color: #3b2016;
+}
+
+.hero__texto {
+  max-width: 620px;
+}
+
+.hero__antetitulo {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f6d5be;
+}
+
+.hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
+  color: #fff;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.08rem;
+  color: #f9efe8;
+}
+
+/* -------------------------------------------------------------
+   Sección catálogo, filtros y controles
+   ------------------------------------------------------------- */
+main.contenedor {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.titulo-seccion {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtro {
+  appearance: none;
+  background-color: var(--bg-superficie);
+  color: var(--texto-principal);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtro:hover {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+.filtro[aria-pressed="true"] {
+  background-color: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+
+#controles.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem 1.25rem;
+  padding: 1.15rem 1.25rem;
+  background-color: var(--bg-superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-suave);
+  margin-bottom: 1.25rem;
+}
+
+#controles .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+
+#controles .campo:last-child {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.campo label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--texto-secundario);
+}
+
+.campo input[type="search"],
+.campo input[type="number"],
+.campo select {
+  width: 100%;
+  height: 40px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d4baa8;
+  border-radius: var(--radio-sm);
+  background-color: #fff;
+  color: var(--texto-principal);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.campo input:focus,
+.campo select:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+  border-color: var(--acento);
+}
+
+#controles label.campo.campo--check {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  min-width: 0;
+  height: 40px;
+  padding: 0 0.25rem;
+  font-weight: 700;
+  color: var(--texto-principal);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.campo--check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--acento);
+  cursor: pointer;
+}
+
+.estado {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--texto-secundario);
+}
+
+.estado--error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radio-sm);
+  background-color: #fdecec;
+  border: 1px solid #e5a9a9;
+  color: var(--agotado);
+  font-weight: 700;
+}
+
+.reintentar {
+  background-color: var(--agotado);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-sm);
+  padding: 0.45rem 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.aviso {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radio-sm);
+  background-color: #fff6e5;
+  border: 1px solid #ecc98b;
+  color: #6b4400;
+  font-size: 0.92rem;
+}
+
+/* -------------------------------------------------------------
+   Grilla y tarjetas de productos
+   ------------------------------------------------------------- */
+ul#grilla.grilla {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+}
+
+.tarjeta--agotado {
+  opacity: 0.82;
+}
+
+.tarjeta__foto {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--bg-suave);
+  overflow: hidden;
+}
+
+.tarjeta__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.35s ease;
+}
+
+.tarjeta__foto img.foto-cargada {
+  opacity: 1;
+}
+
+.tarjeta:hover .tarjeta__foto img.foto-cargada {
+  transform: scale(1.03);
+}
+
+.etiqueta {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  background-color: var(--acento);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.etiqueta--agotado {
+  background-color: var(--agotado);
+}
+
+.tarjeta__cuerpo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.1rem;
+}
+
+.tarjeta__categoria {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--acento);
+}
+
+.tarjeta__nombre {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.tarjeta__abrir {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tarjeta__abrir:hover {
+  color: var(--acento);
+  text-decoration: underline;
+}
+
+.tarjeta__descripcion {
+  margin: 0 0 1rem;
+  font-size: 0.92rem;
+  color: var(--texto-secundario);
+  flex: 1;
+}
+
+.tarjeta__pie {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f0e4dc;
+}
+
+.tarjeta__precio {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.tarjeta__porciones {
+  font-size: 0.85rem;
+  color: var(--texto-secundario);
+}
+
+.tarjeta__extra {
+  margin-top: 0.85rem;
+}
+
+.btn-agregar-rapido {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--radio-sm);
+  border: 1px solid var(--acento);
+  background-color: #fff;
+  color: var(--acento);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-agregar-rapido:hover:not(:disabled) {
+  background-color: var(--acento);
+  color: #fff;
+}
+
+.btn-agregar-rapido:disabled {
+  border-color: #d6c5ba;
+  color: #9b887d;
+  background-color: #faf6f3;
+  cursor: not-allowed;
+}
+
+/* -------------------------------------------------------------
+   Tarjetas fantasma (skeleton)
+   ------------------------------------------------------------- */
+.tarjeta--fantasma {
+  pointer-events: none;
+}
+
+.fantasma__foto {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(90deg, #f2e5dc 25%, #fbf3ed 50%, #f2e5dc 75%);
+  background-size: 200% 100%;
+  animation: pulso 1.3s infinite ease-in-out;
+}
+
+.fantasma__cuerpo {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.fantasma__linea {
+  height: 14px;
+  border-radius: 6px;
+  background-color: #efe2d8;
+  animation: pulso 1.3s infinite ease-in-out;
+}
+
+@keyframes pulso {
+  0%, 100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------
+   Modal de detalle (<dialog>)
+   ------------------------------------------------------------- */
+dialog.detalle {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  background-color: var(--bg-superficie);
+  color: var(--texto-principal);
+  max-width: 720px;
+  width: min(92vw, 720px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+dialog.detalle::backdrop {
+  background-color: rgba(24, 12, 8, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.detalle__cerrar {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--borde);
+  background-color: rgba(255, 255, 255, 0.94);
+  color: var(--texto-principal);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.detalle__cerrar:hover {
+  background-color: var(--acento);
+  color: #fff;
+  border-color: var(--acento);
+}
+
+dialog#detalle img {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+.detalle__cuerpo {
+  padding: 1.5rem;
+}
+
+.detalle__cuerpo h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.65rem;
+}
+
+.detalle__datos {
+  margin: 1rem 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.detalle__stock {
+  margin: 0 0 1.2rem;
+  font-weight: 700;
+  color: var(--exito);
+}
+
+.detalle__stock--agotado {
+  color: var(--agotado);
+}
+
+/* -------------------------------------------------------------
+   Mesa Dulce Interactiva + Barra inferior
+   ------------------------------------------------------------- */
+.btn-mesa-dulce {
+  background-color: var(--acento);
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-sm);
+  height: 40px;
+  padding: 0 1.05rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.btn-mesa-dulce:hover:not(:disabled) {
+  background-color: var(--acento-hover);
+}
+
+.btn-mesa-dulce:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secundario {
+  background-color: transparent;
+  color: var(--acento);
+  border: 1px solid var(--acento);
+  border-radius: var(--radio-sm);
+  height: 40px;
+  padding: 0 0.95rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-secundario:hover {
+  background-color: var(--acento-suave);
+}
+
+.btn-mini {
+  background-color: var(--acento-suave);
+  color: var(--texto-principal);
+  border: 1px solid #d4b4a0;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-mini:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.barra-mesa {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff9f5;
+  border-top: 2px solid var(--acento);
+  padding: 0.75rem 0;
+  z-index: 40;
+  box-shadow: 0 -6px 20px rgba(45, 27, 20, 0.1);
+}
+
+.barra-mesa__contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.barra-mesa__detalle {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: var(--texto-secundario);
+}
+
+.barra-mesa__acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+dialog.mesa-dulce {
+  max-width: 920px;
+  width: min(94vw, 920px);
+}
+
+.mesa-dulce__contenedor {
+  padding: 1.5rem;
+}
+
+.mesa-dulce__contenedor h2 {
+  margin: 0.25rem 0 0.4rem;
+}
+
+.mesa-dulce__subtitulo {
+  margin: 0;
+  color: var(--texto-secundario);
+}
+
+.mesa-dulce__controles-evento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.15rem 0;
+}
+
+.mesa-dulce__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.mesa-dulce__grid h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.mesa-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.mesa-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  background-color: #fff;
+}
+
+.mesa-vacio {
+  padding: 0.85rem;
+  border-radius: var(--radio-sm);
+  background-color: var(--bg-suave);
+  color: var(--texto-secundario);
+  font-size: 0.92rem;
+}
+
+.mesa-controles-cant {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.mesa-metricas {
+  margin-top: 1rem;
+  padding: 0.95rem;
+  border-radius: 10px;
+  background-color: var(--bg-suave);
+  border: 1px solid var(--borde);
+}
+
+.mesa-metricas p {
+  margin: 0.32rem 0;
+}
+
+.mesa-total {
+  font-size: 1.12rem;
+  color: var(--acento);
+  border-top: 1px solid #d4b4a0;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.mesa-acciones-finales {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+/* -------------------------------------------------------------
+   Pie de página
+   ------------------------------------------------------------- */
+.pie {
+  margin-top: 3rem;
+  padding: 1.75rem 0;
+  background-color: var(--bg-suave);
+  border-top: 1px solid var(--borde);
+  color: var(--texto-secundario);
+  font-size: 0.92rem;
+}
+
+.pie p {
+  margin: 0.25rem 0;
+}
+
+@media (max-width: 600px) {
+  .cabecera__fila {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+
+  .menu {
+    gap: 1rem;
+  }
+}

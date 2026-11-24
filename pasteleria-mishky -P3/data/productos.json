@@ -1,0 +1,180 @@
+
+[
+    {
+      "id": 1,
+      "nombre": "Torta de chocolate húmeda",
+      "categoria": "Tortas",
+      "descripcion": "Bizcocho de cacao peruano al 70 % relleno y cubierto con fudge de chocolate.",
+      "precio": 89.9,
+      "porciones": 16,
+      "imagen": "img/productos/torta-chocolate.jpg",
+      "stock": 6,
+      "destacado": true
+    },
+    {
+      "id": 2,
+      "nombre": "Torta selva negra",
+      "categoria": "Tortas",
+      "descripcion": "Capas de chocolate, crema chantilly y cerezas al marrasquino.",
+      "precio": 92,
+      "porciones": 16,
+      "imagen": "img/productos/torta-selva-negra.jpg",
+      "stock": 4,
+      "destacado": false
+    },
+    {
+      "id": 3,
+      "nombre": "Cheesecake de maracuyá",
+      "categoria": "Tortas",
+      "descripcion": "Base de galleta, crema de queso horneada y espejo de maracuyá con semillas.",
+      "precio": 85,
+      "porciones": 12,
+      "imagen": "img/productos/cheesecake-maracuya.jpg",
+      "stock": 5,
+      "destacado": true
+    },
+    {
+      "id": 4,
+      "nombre": "Torta tres leches",
+      "categoria": "Tortas",
+      "descripcion": "Bizcocho esponjoso bañado en tres leches, con merengue y canela.",
+      "precio": 79.9,
+      "porciones": 16,
+      "imagen": "img/productos/torta-tres-leches.jpg",
+      "stock": 0,
+      "destacado": false
+    },
+    {
+      "id": 5,
+      "nombre": "Suspiro a la limeña",
+      "categoria": "Postres peruanos",
+      "descripcion": "Manjar blanco de yemas coronado con merengue al oporto y canela.",
+      "precio": 12.5,
+      "porciones": 1,
+      "imagen": "img/productos/suspiro-limena.jpg",
+      "stock": 20,
+      "destacado": true
+    },
+    {
+      "id": 6,
+      "nombre": "Clásico combinado",
+      "categoria": "Postres peruanos",
+      "descripcion": "Mitad arroz con leche y mitad mazamorra morada con frutas.",
+      "precio": 10.9,
+      "porciones": 1,
+      "imagen": "img/productos/clasico-combinado.jpg",
+      "stock": 15,
+      "destacado": false
+    },
+    {
+      "id": 7,
+      "nombre": "Picarones con miel",
+      "categoria": "Postres peruanos",
+      "descripcion": "Seis picarones de zapallo y camote con miel de chancaca e higos.",
+      "precio": 14,
+      "porciones": 1,
+      "imagen": "img/productos/picarones.jpg",
+      "stock": 12,
+      "destacado": false
+    },
+    {
+      "id": 8,
+      "nombre": "King Kong de manjar",
+      "categoria": "Postres peruanos",
+      "descripcion": "Galleta de mantequilla con manjar blanco, dulce de piña y maní. 1 kg.",
+      "precio": 45,
+      "porciones": 10,
+      "imagen": "img/productos/king-kong.jpg",
+      "stock": 8,
+      "destacado": false
+    },
+    {
+      "id": 9,
+      "nombre": "Panetón artesanal",
+      "categoria": "Panes y bollería",
+      "descripcion": "Masa madre de 48 horas con frutas confitadas y pasas. 900 g.",
+      "precio": 39.9,
+      "porciones": 10,
+      "imagen": "img/productos/paneton.jpg",
+      "stock": 25,
+      "destacado": true
+    },
+    {
+      "id": 10,
+      "nombre": "Rol de canela",
+      "categoria": "Panes y bollería",
+      "descripcion": "Masa brioche con canela y azúcar rubia, glaseado de queso crema.",
+      "precio": 6.5,
+      "porciones": 1,
+      "imagen": "img/productos/rol-canela.jpg",
+      "stock": 30,
+      "destacado": false
+    },
+    {
+      "id": 11,
+      "nombre": "Croissant de mantequilla",
+      "categoria": "Panes y bollería",
+      "descripcion": "Hojaldre laminado con mantequilla, dorado y crujiente.",
+      "precio": 5.5,
+      "porciones": 1,
+      "imagen": "img/productos/croissant.jpg",
+      "stock": 40,
+      "destacado": false
+    },
+    {
+      "id": 12,
+      "nombre": "Pan de yema",
+      "categoria": "Panes y bollería",
+      "descripcion": "Bolsa de seis panes suaves de yema con brillo de huevo.",
+      "precio": 9,
+      "porciones": 6,
+      "imagen": "img/productos/pan-yema.jpg",
+      "stock": 18,
+      "destacado": false
+    },
+    {
+      "id": 13,
+      "nombre": "Alfajores de maicena",
+      "categoria": "Galletas y bocaditos",
+      "descripcion": "Caja de seis alfajores rellenos de manjar blanco y azúcar impalpable.",
+      "precio": 18,
+      "porciones": 6,
+      "imagen": "img/productos/alfajores.jpg",
+      "stock": 22,
+      "destacado": true
+    },
+    {
+      "id": 14,
+      "nombre": "Galletas de avena y pasas",
+      "categoria": "Galletas y bocaditos",
+      "descripcion": "Paquete de 12 galletas de avena integral, pasas y panela.",
+      "precio": 15,
+      "porciones": 12,
+      "imagen": "img/productos/galletas-avena.jpg",
+      "stock": 0,
+      "destacado": false
+    },
+    {
+      "id": 15,
+      "nombre": "Cupcake red velvet",
+      "categoria": "Galletas y bocaditos",
+      "descripcion": "Bizcocho red velvet con frosting de queso crema.",
+      "precio": 7.9,
+      "porciones": 1,
+      "imagen": "img/productos/cupcake-red-velvet.jpg",
+      "stock": 14,
+      "destacado": false
+    },
+    {
+      "id": 16,
+      "nombre": "Macarons de lúcuma",
+      "categoria": "Galletas y bocaditos",
+      "descripcion": "Caja de seis macarons de almendra rellenos de ganache de lúcuma.",
+      "precio": 24,
+      "porciones": 6,
+      "imagen": "img/productos/macarons-lucuma.jpg",
+      "stock": 9,
+      "destacado": false
+    }
+  ]
+  
